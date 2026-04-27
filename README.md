@@ -1,5 +1,7 @@
 # WP AI Daemon
 
+> **Experimental proof of concept. Do not install on a live, production, or otherwise important WordPress site.** This plugin gives an AI agent the ability to write files to disk, create and modify content, and execute scheduled actions on your WordPress install. It has not been audited for security or stability. Run it only in a local or disposable dev environment.
+
 A WordPress plugin that turns a WordPress install into a personal AI agent. Talk to an agent that knows your site, or set standing instructions and let it work while you're away.
 
 ## What it does
