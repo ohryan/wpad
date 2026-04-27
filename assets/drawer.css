@@ -1,0 +1,456 @@
+/* ==========================================================================
+   Admin bar button
+   ========================================================================== */
+
+#wp-admin-bar-wpad-drawer-toggle .ab-icon.dashicons {
+	font-size: 18px;
+	width: 18px;
+	margin-top: 1px;
+}
+
+/* Highlight the button when the drawer is open */
+#wp-admin-bar-wpad-drawer-toggle.is-active > .ab-item,
+#wp-admin-bar-wpad-drawer-toggle.is-active > .ab-item:hover {
+	background: #2271b1 !important;
+	color: #fff !important;
+}
+
+/* ==========================================================================
+   Drawer panel
+   ========================================================================== */
+
+#wpad-drawer {
+	position: fixed;
+	top: 32px; /* WP admin bar height */
+	left: 0;
+	right: 0;
+	height: 50vh;
+	min-height: 320px;
+	z-index: 99998; /* just below WP admin bar (99999) */
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	border-bottom: 2px solid #2271b1;
+	box-shadow: 0 8px 32px rgba( 0, 0, 0, 0.18 );
+
+	/* Slide-up off-screen by default */
+	transform: translateY( calc( -100% - 2px ) );
+	transition: transform 0.28s cubic-bezier( 0.4, 0, 0.2, 1 );
+
+	/* Hidden from AT until open */
+	visibility: hidden;
+}
+
+#wpad-drawer.is-open {
+	transform: translateY( 0 );
+	visibility: visible;
+}
+
+@media screen and ( max-width: 782px ) {
+	#wpad-drawer {
+		top: 46px; /* taller admin bar on mobile */
+	}
+}
+
+/* ==========================================================================
+   Header bar
+   ========================================================================== */
+
+#wpad-drawer-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 16px;
+	height: 40px;
+	background: #1d2327;
+	flex-shrink: 0;
+	border-bottom: 1px solid #3c434a;
+}
+
+#wpad-drawer-title {
+	font-size: 12px;
+	font-weight: 600;
+	color: #f0f0f1;
+	letter-spacing: 0.03em;
+}
+
+#wpad-drawer-header-actions {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+#wpad-drawer-expand {
+	background: none;
+	border: none;
+	color: #8c8f94;
+	font-size: 17px;
+	line-height: 1;
+	cursor: pointer;
+	padding: 4px 6px;
+	border-radius: 3px;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+}
+
+#wpad-drawer-expand:hover {
+	color: #f0f0f1;
+	background: rgba( 255, 255, 255, 0.1 );
+}
+
+#wpad-drawer-close {
+	background: none;
+	border: none;
+	color: #8c8f94;
+	font-size: 18px;
+	line-height: 1;
+	cursor: pointer;
+	padding: 4px 6px;
+	border-radius: 3px;
+}
+
+#wpad-drawer-close:hover {
+	color: #f0f0f1;
+	background: rgba( 255, 255, 255, 0.1 );
+}
+
+/* ==========================================================================
+   Thread
+   ========================================================================== */
+
+#wpad-drawer-thread {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	scroll-behavior: smooth;
+}
+
+#wpad-drawer-empty {
+	color: #646970;
+	font-style: italic;
+	font-size: 14px;
+	text-align: center;
+	margin: auto;
+	padding: 0 20px;
+	line-height: 1.6;
+}
+
+/* ==========================================================================
+   Messages
+   ========================================================================== */
+
+#wpad-drawer .wpad-drawer-msg {
+	display: flex;
+	flex-direction: column;
+	max-width: 80%;
+	animation: wpad-drawer-msg-in 0.18s ease both;
+}
+
+@keyframes wpad-drawer-msg-in {
+	from { opacity: 0; transform: translateY( 5px ); }
+	to   { opacity: 1; transform: translateY( 0 ); }
+}
+
+#wpad-drawer .wpad-drawer-msg--user {
+	align-self: flex-end;
+}
+
+#wpad-drawer .wpad-drawer-msg--assistant {
+	align-self: flex-start;
+}
+
+#wpad-drawer .wpad-drawer-msg__bubble {
+	padding: 9px 13px;
+	border-radius: 4px;
+	font-size: 14px;
+	line-height: 1.55;
+	word-break: break-word;
+}
+
+#wpad-drawer .wpad-drawer-msg--user .wpad-drawer-msg__bubble {
+	background: #2271b1;
+	color: #fff;
+	border-bottom-right-radius: 2px;
+	white-space: pre-wrap;
+}
+
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	color: #1d2327;
+	border-bottom-left-radius: 2px;
+}
+
+/* Reset block elements inside assistant bubbles */
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble p,
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble ol,
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble ul {
+	margin: 0 0 0.5em;
+}
+
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble p:last-child,
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble ol:last-child,
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble ul:last-child {
+	margin-bottom: 0;
+}
+
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble ol,
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble ul {
+	padding-left: 1.3em;
+}
+
+#wpad-drawer .wpad-drawer-msg--assistant .wpad-drawer-msg__bubble code {
+	font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', Consolas, monospace;
+	font-size: 12px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	padding: 1px 4px;
+}
+
+/* ==========================================================================
+   Typing indicator
+   ========================================================================== */
+
+#wpad-drawer .wpad-drawer-msg--typing .wpad-drawer-msg__bubble {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	padding: 14px 16px;
+}
+
+#wpad-drawer .wpad-drawer-msg--typing span {
+	display: block;
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background: #2271b1;
+	animation: wpad-drawer-bounce 1.3s infinite ease-in-out;
+}
+
+#wpad-drawer .wpad-drawer-msg--typing span:nth-child(1) { animation-delay: 0s;    opacity: 0.4; }
+#wpad-drawer .wpad-drawer-msg--typing span:nth-child(2) { animation-delay: 0.18s; opacity: 0.4; }
+#wpad-drawer .wpad-drawer-msg--typing span:nth-child(3) { animation-delay: 0.36s; opacity: 0.4; }
+
+@keyframes wpad-drawer-bounce {
+	0%, 60%, 100% { transform: translateY( 0 );    opacity: 0.4; }
+	30%            { transform: translateY( -5px ); opacity: 1; }
+}
+
+/* ==========================================================================
+   Action result cards
+   ========================================================================== */
+
+#wpad-drawer .wpad-drawer-msg__actions {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	margin-top: 6px;
+}
+
+#wpad-drawer .wpad-drawer-action-card {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex-wrap: wrap;
+	font-size: 12px;
+	padding: 6px 10px;
+	border-radius: 4px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	color: #1d2327;
+}
+
+#wpad-drawer .wpad-drawer-action-card--error {
+	background: #fcf0f1;
+	border-color: #cc1818;
+	color: #cc1818;
+}
+
+#wpad-drawer .wpad-drawer-action-card--success {
+	border-color: #00a32a;
+	background: #f0f6f0;
+}
+
+#wpad-drawer .wpad-drawer-action-card__icon {
+	flex-shrink: 0;
+	font-style: normal;
+}
+
+#wpad-drawer .wpad-drawer-action-card__text {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#wpad-drawer .wpad-drawer-action-card--error .wpad-drawer-action-card__text {
+	overflow: visible;
+	text-overflow: unset;
+	white-space: normal;
+}
+
+#wpad-drawer .wpad-drawer-action-card__btn {
+	flex-shrink: 0;
+	font-size: 11px !important;
+	padding: 2px 8px !important;
+	height: auto !important;
+	line-height: 1.6 !important;
+	border-radius: 3px !important;
+}
+
+#wpad-drawer .wpad-drawer-snippet-output {
+	flex-basis: 100%;
+	margin: 5px 0 0;
+	padding: 7px 10px;
+	background: #1d2327;
+	color: #f0f0f1;
+	border-radius: 3px;
+	font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', Consolas, monospace;
+	font-size: 12px;
+	line-height: 1.5;
+	white-space: pre-wrap;
+	word-break: break-all;
+	max-height: 160px;
+	overflow-y: auto;
+}
+
+/* ==========================================================================
+   Input area
+   ========================================================================== */
+
+#wpad-drawer-input-area {
+	flex-shrink: 0;
+	display: flex;
+	gap: 8px;
+	align-items: flex-end;
+	padding: 10px 16px;
+	border-top: 1px solid #dcdcde;
+	background: #f6f7f7;
+}
+
+#wpad-drawer-input {
+	flex: 1 1 auto;
+	box-sizing: border-box;
+	resize: none;
+	font-size: 14px;
+	line-height: 1.5;
+	min-height: 56px;
+}
+
+#wpad-drawer-input-actions {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex-shrink: 0;
+}
+
+#wpad-drawer-input-actions .spinner {
+	float: none;
+	margin: 0;
+}
+
+/* ==========================================================================
+   Source modal (global — used by both drawer and chat page)
+   ========================================================================== */
+
+.wpad-modal-overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba( 0, 0, 0, 0.55 );
+	z-index: 100000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 24px;
+	box-sizing: border-box;
+	animation: wpad-fade-in 0.15s ease;
+}
+
+@keyframes wpad-fade-in {
+	from { opacity: 0; }
+	to   { opacity: 1; }
+}
+
+.wpad-modal-dialog {
+	background: #1d2327;
+	border: 1px solid #3c434a;
+	border-radius: 4px;
+	width: 100%;
+	max-width: 860px;
+	max-height: 80vh;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 24px 64px rgba( 0, 0, 0, 0.5 );
+	animation: wpad-slide-up 0.15s ease;
+	overflow: hidden;
+}
+
+@keyframes wpad-slide-up {
+	from { transform: translateY( 12px ); opacity: 0; }
+	to   { transform: translateY( 0 );   opacity: 1; }
+}
+
+.wpad-modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 16px;
+	border-bottom: 1px solid #3c434a;
+	flex-shrink: 0;
+}
+
+.wpad-modal-title {
+	font-size: 13px;
+	font-weight: 500;
+	color: #f0f0f1;
+	font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', Consolas, monospace;
+}
+
+.wpad-modal-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.wpad-modal-copy.button {
+	font-size: 11px !important;
+	padding: 2px 10px !important;
+	height: auto !important;
+	line-height: 1.6 !important;
+	border-radius: 3px !important;
+}
+
+.wpad-modal-close {
+	background: none;
+	border: none;
+	color: #8c8f94;
+	font-size: 20px;
+	line-height: 1;
+	cursor: pointer;
+	padding: 0 4px;
+	border-radius: 3px;
+}
+
+.wpad-modal-close:hover {
+	color: #f0f0f1;
+	background: rgba( 255, 255, 255, 0.1 );
+}
+
+.wpad-modal-code {
+	margin: 0;
+	padding: 20px;
+	color: #f0f0f1;
+	font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', Consolas, monospace;
+	font-size: 13px;
+	line-height: 1.6;
+	white-space: pre;
+	overflow: auto;
+	flex: 1 1 auto;
+	min-height: 0;
+}

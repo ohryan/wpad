@@ -1,0 +1,1 @@
+Posts are always saved as drafts — status is forced to draft regardless of any value you pass. Do not generate spammy, misleading, or substantially duplicate content. Use category and tag slugs that already exist on the site — do not invent taxonomy terms.

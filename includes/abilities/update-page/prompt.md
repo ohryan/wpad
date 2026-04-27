@@ -1,0 +1,1 @@
+Page updates are high-risk — pages are often critical, publicly visible content. Confirm you have the correct post_id before proceeding; ask the user if there is any ambiguity. Only modify fields the user explicitly asked you to change. The page will be saved as a draft for human review before any changes go live.

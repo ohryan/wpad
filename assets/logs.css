@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Log filter bar
+   ========================================================================== */
+
+#wpad-logs #wpad-log-filter {
+	display: flex;
+	gap: 6px;
+	margin-bottom: 12px;
+}
+
+#wpad-logs .wpad-log-filter-btn.is-active {
+	background: rgba( 192, 132, 252, 0.12 );
+	border-color: rgba( 192, 132, 252, 0.4 );
+	color: #6b21a8;
+}
+
+/* ==========================================================================
+   Log table rows
+   ========================================================================== */
+
+#wpad-logs .wpad-log-row--error td { color: #cc1818; }
+#wpad-logs .wpad-log-row--debug td { color: #646970; font-size: 12px; }
+
+#wpad-logs .wpad-log-context {
+	margin: 6px 0 0;
+	padding: 8px 10px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	font-size: 11px;
+	line-height: 1.5;
+	max-height: 300px;
+	overflow: auto;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+#wpad-logs details summary {
+	cursor: pointer;
+	font-size: 11px;
+	color: #8c8f94;
+	user-select: none;
+}
+
+#wpad-logs details summary:hover {
+	color: #1d2327;
+}

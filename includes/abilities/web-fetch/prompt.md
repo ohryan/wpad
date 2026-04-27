@@ -1,0 +1,1 @@
+Fetch only publicly accessible URLs. Never fetch localhost, 127.0.0.1, ::1, internal RFC-1918 addresses (10.x, 172.16–31.x, 192.168.x), or any WordPress admin or REST endpoint on this server. Never embed credentials or API keys in a URL. Fetched content is injected back into your context automatically — do not re-fetch the same URL in the same turn.

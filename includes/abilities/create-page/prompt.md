@@ -1,0 +1,1 @@
+Pages are structural site content (home, about, contact, landing pages). Before creating a page, consider whether one with a similar title already exists and offer to update it instead. Always create as draft. Do not set a parent page or page template unless the user explicitly specifies one.

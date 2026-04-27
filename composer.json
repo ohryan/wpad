@@ -1,0 +1,14 @@
+{
+  "name": "ohryan/wp-ai-daemon",
+  "description": "WPAD — personal AI agent for WordPress",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "woocommerce/action-scheduler": "^3.8"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}

@@ -1,0 +1,1 @@
+Confirm you have the correct post_id before updating — ask the user if you are not certain. Only update fields the user explicitly asked you to change; leave everything else untouched. The post will be saved as a draft regardless of its current published status.

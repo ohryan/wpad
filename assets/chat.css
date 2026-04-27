@@ -1,0 +1,308 @@
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+#wpad-chat #wpad-layout {
+	margin-top: 16px;
+	max-width: 800px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+/* Dashboard widget context */
+#wpad_chat #wpad-layout {
+	margin-top: 0;
+	max-width: none;
+}
+
+#wpad_chat #wpad-thread {
+	height: 380px;
+}
+
+/* ==========================================================================
+   Error banner
+   ========================================================================== */
+
+#wpad-chat #wpad-error .notice {
+	margin: 0;
+}
+
+/* ==========================================================================
+   Message thread
+   ========================================================================== */
+
+#wpad-chat #wpad-thread {
+	height: 560px;
+	overflow-y: auto;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	padding: 20px 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	scroll-behavior: smooth;
+	background: #fff;
+}
+
+#wpad-chat #wpad-thread-empty {
+	color: #646970;
+	font-style: italic;
+	text-align: center;
+	margin: auto;
+	font-size: 14px;
+	padding: 0 20px;
+	line-height: 1.6;
+}
+
+/* ==========================================================================
+   Messages
+   ========================================================================== */
+
+#wpad-chat .wpad-msg {
+	display: flex;
+	flex-direction: column;
+	max-width: 80%;
+	animation: wpad-message-in 0.2s ease both;
+}
+
+@keyframes wpad-message-in {
+	from { opacity: 0; transform: translateY( 6px ); }
+	to   { opacity: 1; transform: translateY( 0 ); }
+}
+
+#wpad-chat .wpad-msg--user {
+	align-self: flex-end;
+}
+
+#wpad-chat .wpad-msg--assistant {
+	align-self: flex-start;
+}
+
+#wpad-chat .wpad-msg__bubble {
+	padding: 10px 14px;
+	border-radius: 4px;
+	line-height: 1.55;
+	font-size: 14px;
+	word-break: break-word;
+}
+
+/* User bubbles keep literal whitespace; assistant bubbles render HTML. */
+#wpad-chat .wpad-msg--user .wpad-msg__bubble {
+	white-space: pre-wrap;
+}
+
+/* Reset block-level elements inside assistant bubbles. */
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble p,
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble ol,
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble ul {
+	margin: 0 0 0.6em;
+}
+
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble p:last-child,
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble ol:last-child,
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble ul:last-child {
+	margin-bottom: 0;
+}
+
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble ol,
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble ul {
+	padding-left: 1.4em;
+}
+
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble li {
+	margin-bottom: 0.3em;
+}
+
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble li:last-child {
+	margin-bottom: 0;
+}
+
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble code {
+	font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', Consolas, monospace;
+	font-size: 12px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 3px;
+	padding: 1px 4px;
+}
+
+/* User bubble */
+#wpad-chat .wpad-msg--user .wpad-msg__bubble {
+	background: #2271b1;
+	color: #fff;
+	border-bottom-right-radius: 2px;
+}
+
+/* Assistant bubble */
+#wpad-chat .wpad-msg--assistant .wpad-msg__bubble {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	color: #1d2327;
+	border-bottom-left-radius: 2px;
+}
+
+/* ==========================================================================
+   Action result cards
+   ========================================================================== */
+
+#wpad-chat .wpad-msg__actions {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin-top: 8px;
+}
+
+#wpad-chat .wpad-action-card {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex-wrap: wrap;
+	font-size: 12px;
+	padding: 7px 10px;
+	border-radius: 4px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	color: #1d2327;
+}
+
+#wpad-chat .wpad-action-card--error {
+	background: #fcf0f1;
+	border-color: #cc1818;
+	color: #cc1818;
+}
+
+#wpad-chat .wpad-action-card--published {
+	border-color: #00a32a;
+	background: #f0f6f0;
+}
+
+#wpad-chat .wpad-action-card__icon {
+	flex-shrink: 0;
+	font-style: normal;
+}
+
+#wpad-chat .wpad-action-card__text {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#wpad-chat .wpad-action-card--error .wpad-action-card__text {
+	overflow: visible;
+	text-overflow: unset;
+	white-space: normal;
+}
+
+#wpad-chat .wpad-action-card__btn {
+	flex-shrink: 0;
+	font-size: 11px !important;
+	padding: 2px 8px !important;
+	height: auto !important;
+	line-height: 1.6 !important;
+	border-radius: 3px !important;
+}
+
+/* ==========================================================================
+   Source viewer button (write_plugin + run_snippet)
+   ========================================================================== */
+
+
+#wpad-chat .wpad-source-btn.button {
+	flex-shrink: 0;
+	font-size: 11px !important;
+	padding: 2px 8px !important;
+	height: auto !important;
+	line-height: 1.6 !important;
+	border-radius: 3px !important;
+	margin-top: 4px;
+}
+
+/* ==========================================================================
+   Snippet output
+   ========================================================================== */
+
+#wpad-chat .wpad-action-card .wpad-snippet-output {
+	flex-basis: 100%;
+	margin: 6px 0 0;
+	padding: 8px 10px;
+	background: #1d2327;
+	color: #f0f0f1;
+	border-radius: 3px;
+	font-family: ui-monospace, 'Cascadia Code', 'Fira Mono', Consolas, monospace;
+	font-size: 12px;
+	line-height: 1.55;
+	white-space: pre-wrap;
+	word-break: break-all;
+	max-height: 260px;
+	overflow-y: auto;
+	border: 1px solid #3c434a;
+}
+
+/* Source modal styles live in drawer.css (loaded globally). */
+
+/* ==========================================================================
+   Typing indicator
+   ========================================================================== */
+
+#wpad-chat .wpad-msg--typing .wpad-msg__bubble {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	padding: 14px 18px;
+}
+
+#wpad-chat .wpad-msg--typing span {
+	display: block;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #2271b1;
+	animation: wpad-bounce 1.3s infinite ease-in-out;
+}
+
+#wpad-chat .wpad-msg--typing span:nth-child(1) { animation-delay: 0s;    opacity: 0.5; }
+#wpad-chat .wpad-msg--typing span:nth-child(2) { animation-delay: 0.18s; opacity: 0.5; }
+#wpad-chat .wpad-msg--typing span:nth-child(3) { animation-delay: 0.36s; opacity: 0.5; }
+
+@keyframes wpad-bounce {
+	0%, 60%, 100% { transform: translateY( 0 ); opacity: 0.4; }
+	30%            { transform: translateY( -6px ); opacity: 1; }
+}
+
+/* ==========================================================================
+   Input area
+   ========================================================================== */
+
+#wpad-chat #wpad-input-area {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+#wpad-chat #wpad-input {
+	width: 100%;
+	box-sizing: border-box;
+	resize: vertical;
+	font-size: 14px;
+	line-height: 1.5;
+	min-height: 72px;
+}
+
+#wpad-chat #wpad-input-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+#wpad-chat #wpad-input-actions .spinner {
+	float: none;
+	margin: 0;
+}
+
+#wpad-chat #wpad-hint {
+	font-size: 12px;
+	color: #646970;
+}

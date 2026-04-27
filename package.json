@@ -1,0 +1,14 @@
+{
+  "name": "wp-ai-daemon",
+  "version": "1.0.0",
+  "description": "WPAD — personal AI agent for WordPress",
+  "private": true,
+  "scripts": {
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop",
+    "env:clean": "wp-env clean all && wp-env start"
+  },
+  "devDependencies": {
+    "@wordpress/env": "^10.0.0"
+  }
+}
